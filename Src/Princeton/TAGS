@@ -1,0 +1,17 @@
+
+./Main.hs,51
+module MainMain0,1
+main main6,7
+main main8,9
+
+./Princeton/A4.hs,322
+module Princeton.A4Princeton.A40,1
+data QuickFind QuickFind6,7
+data QuickFind = QuickFind QuickFind6,7
+data QuickFind = QuickFind Int | EmptyQuickFindEmptyQuickFind6,7
+data QuickUnion=QuickUnion7,8
+data QuickUnion= QuickUnion QuickUnion7,8
+data QuickUnion= QuickUnion Int | EmptyQuickUnionEmptyQuickUnion7,8
+
+./Setup.hs,15
+main main1,2
