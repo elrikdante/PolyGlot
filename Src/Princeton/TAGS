@@ -1,17 +1,57 @@
 
+./dist/build/autogen/Paths_Princeton.hs,968
+module Paths_Princeton Paths_Princeton0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version15,16
+version version16,17
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir17,18
+bindir, libdir, datadir, libexecdir,libexecdir17,18
+bindir, libdir, datadir,datadir17,18
+bindir, libdir,libdir17,18
+bindir,bindir17,18
+bindir bindir19,20
+libdir libdir20,21
+datadir datadir21,22
+libexecdir libexecdir22,23
+sysconfdir sysconfdir23,24
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir25,26
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir25,26
+getBinDir, getLibDir, getDataDir,getDataDir25,26
+getBinDir, getLibDir,getLibDir25,26
+getBinDir,getBinDir25,26
+getBinDir getBinDir26,27
+getLibDir getLibDir27,28
+getDataDir getDataDir28,29
+getLibexecDir getLibexecDir29,30
+getSysconfDir getSysconfDir30,31
+getDataFileName getDataFileName32,33
+getDataFileName getDataFileName33,34
+
 ./Main.hs,51
 module MainMain0,1
 main main6,7
 main main8,9
 
-./Princeton/A4.hs,322
+./Princeton/A4.hs,540
 module Princeton.A4Princeton.A40,1
-data QuickFind QuickFind6,7
-data QuickFind = QuickFind QuickFind6,7
-data QuickFind = QuickFind Int | EmptyQuickFindEmptyQuickFind6,7
-data QuickUnion=QuickUnion7,8
-data QuickUnion= QuickUnion QuickUnion7,8
-data QuickUnion= QuickUnion Int | EmptyQuickUnionEmptyQuickUnion7,8
+data QuickFind QuickFind11,12
+data QuickFind a  = QuickFind QuickFind11,12
+data QuickUnion QuickUnion12,13
+data QuickUnion a = QuickUnion QuickUnion12,13
+data Node Node13,14
+data Node a       = Node Node13,14
+data Node a       = Node RootID a | Root Root13,14
+type NodeLength NodeLength15,16
+type RootID RootID16,17
+type NodeID NodeID17,18
+initQF initQF19,20
+initQF initQF20,21
+runQF runQF29,30
+root root37,38
+union union48,49
+--union --union58,59
+--union --union59,60
 
 ./Setup.hs,15
 main main1,2
