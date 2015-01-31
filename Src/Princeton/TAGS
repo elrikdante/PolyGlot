@@ -3,55 +3,55 @@
 module Paths_Princeton Paths_Princeton0,1
 catchIO catchIO11,12
 catchIO catchIO12,13
+version version14,15
 version version15,16
-version version16,17
-bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir17,18
-bindir, libdir, datadir, libexecdir,libexecdir17,18
-bindir, libdir, datadir,datadir17,18
-bindir, libdir,libdir17,18
-bindir,bindir17,18
-bindir bindir19,20
-libdir libdir20,21
-datadir datadir21,22
-libexecdir libexecdir22,23
-sysconfdir sysconfdir23,24
-getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir25,26
-getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir25,26
-getBinDir, getLibDir, getDataDir,getDataDir25,26
-getBinDir, getLibDir,getLibDir25,26
-getBinDir,getBinDir25,26
-getBinDir getBinDir26,27
-getLibDir getLibDir27,28
-getDataDir getDataDir28,29
-getLibexecDir getLibexecDir29,30
-getSysconfDir getSysconfDir30,31
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
 getDataFileName getDataFileName32,33
-getDataFileName getDataFileName33,34
 
-./Main.hs,51
+./Main.hs,52
 module MainMain0,1
-main main6,7
 main main8,9
+main main9,10
 
-./Princeton/A4.hs,540
+./Princeton/A4.hs,568
 module Princeton.A4Princeton.A40,1
-data QuickFind QuickFind11,12
-data QuickFind a  = QuickFind QuickFind11,12
-data QuickUnion QuickUnion12,13
-data QuickUnion a = QuickUnion QuickUnion12,13
-data Node Node13,14
-data Node a       = Node Node13,14
-data Node a       = Node RootID a | Root Root13,14
-type NodeLength NodeLength15,16
-type RootID RootID16,17
-type NodeID NodeID17,18
-initQF initQF19,20
-initQF initQF20,21
-runQF runQF29,30
-root root37,38
-union union48,49
---union --union58,59
---union --union59,60
+data QuickFind QuickFind21,22
+data QuickFind a  = QuickFind QuickFind21,22
+data QuickUnion QuickUnion22,23
+data QuickUnion a = QuickUnion QuickUnion22,23
+data Node Node23,24
+data Node a       = Node Node23,24
+data Node a       = Node RootID a | Root Root23,24
+type NodeLength NodeLength25,26
+type RootID RootID26,27
+type NodeID NodeID27,28
+initQF initQF35,36
+runQF runQF44,45
+connectedComponents connectedComponents50,51
+root root60,61
+find find68,69
+isConnected isConnected76,77
+union union87,88
 
 ./Setup.hs,15
 main main1,2
