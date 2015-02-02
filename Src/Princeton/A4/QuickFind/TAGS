@@ -1,0 +1,87 @@
+
+./dist/build/autogen/Paths_QuickFind.hs,968
+module Paths_QuickFind Paths_QuickFind0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version14,15
+version version15,16
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
+getDataFileName getDataFileName32,33
+
+./dist/dist-sandbox-57e233d4/build/autogen/Paths_QuickFind.hs,968
+module Paths_QuickFind Paths_QuickFind0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version14,15
+version version15,16
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
+getDataFileName getDataFileName32,33
+
+./dist/dist-sandbox-57e233d4/setup/setup.hs,19
+import import0,1
+
+./Setup.hs,15
+main main1,2
+
+./src/Main.hs,52
+module MainMain0,1
+main main8,9
+main main9,10
+
+./src/QuickFind.hs,507
+newtype QuickFind QuickFind11,12
+newtype QuickFind a = QuickFind QuickFind11,12
+data Node Node14,15
+data Node a =   Info Info14,15
+data Node a =   Info { ptr ptr14,15
+data Node a =   Info { ptr :: Int, descr descr14,15
+              | Link Link15,16
+              | Link {ptr ptr15,16
+              | Link {ptr :: Int, descr descr15,16
+mkQF mkQF21,22
+mkQF mkQF22,23
+isConnected isConnected25,26
+isConnected isConnected26,27
+union union33,34
+union union34,35
+runQF=runQF46,47
