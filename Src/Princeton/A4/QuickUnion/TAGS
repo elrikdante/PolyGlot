@@ -1,0 +1,89 @@
+
+./dist/build/autogen/Paths_QuickUnion.hs,970
+module Paths_QuickUnion Paths_QuickUnion0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version14,15
+version version15,16
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
+getDataFileName getDataFileName32,33
+
+./dist/dist-sandbox-68e9262a/build/autogen/Paths_QuickUnion.hs,970
+module Paths_QuickUnion Paths_QuickUnion0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version14,15
+version version15,16
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
+getDataFileName getDataFileName32,33
+
+./dist/dist-sandbox-68e9262a/setup/setup.hs,19
+import import0,1
+
+./Setup.hs,15
+main main1,2
+
+./src/Main.hs,55
+module MainMain0,1
+main main17,18
+main main18,19
+
+./src/QuickUnion.hs,509
+newtype QuickUnion QuickUnion5,6
+newtype QuickUnion a = QuickUnion QuickUnion5,6
+data Node Node7,8
+data Node a =   Info Info7,8
+data Node a =   Info {descr descr7,8
+              | Link Link8,9
+              | Link {rootTree rootTree8,9
+              | Link {rootTree :: Int, descr descr8,9
+mkQU mkQU12,13
+mkQU mkQU13,14
+root root17,18
+root root18,19
+union union28,29
+union union29,30
+isConnected isConnected39,40
+isConnected isConnected40,41
+find find43,44
+find find44,45
