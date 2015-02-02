@@ -1,4 +1,4 @@
-{- #LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings #-}
 module LogParser.LogParser
        (IP(..),
         parseIP,
@@ -6,9 +6,10 @@ module LogParser.LogParser
         parseProduct)
        where
 
-import Data.Attoparsec.Char8
+import           Control.Applicative
+import           Data.Attoparsec.Char8
 import qualified Data.Time as T
-import Data.Word
+import           Data.Word
 
 -- Word8: 8-bit unsigned integer values
 data IP = IP Word8 Word8 Word8 Word8 deriving Show
@@ -37,7 +38,27 @@ parseIP = do
   return $ IP d1 d2 d3 d4
 
 parseProduct :: Parser Product
-parseProduct = return $ Mouse
+parseProduct =
+      (string "mouse" >> return Mouse)
+  <|> (string "keyboard" >> return Keyboard)
+  <|> (string "speakers" >> return Speakers)
+  <|> (string "monitor" >> return Monitor)
 
 parseTime :: Parser T.LocalTime
-parseTime = undefined
+parseTime = do
+  yyyy <- count 4 digit
+  char '-'
+  mm <- count 2 digit
+  char '-'
+  dd <- count 2 digit
+  char ' '
+  hh <- count 2 digit
+  char ':'
+  jj <- count 2 digit
+  char ':'
+  ss <- count 2 digit
+  return $
+    T.LocalTime { T.localDay  = T.fromGregorian (read yyyy) (read mm) (read dd)
+                 ,T.localTimeOfDay = T.TimeOfDay (read hh) (read jj) (read ss)
+                }
+  
