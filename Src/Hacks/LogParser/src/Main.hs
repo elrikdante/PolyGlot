@@ -10,7 +10,4 @@ main :: IO ()
 main =
   do
     d <- B.readFile "data.txt"
-    
     print $ parseOnly parseLog d
-    print $ show $ map productFromID [1..4]
-    

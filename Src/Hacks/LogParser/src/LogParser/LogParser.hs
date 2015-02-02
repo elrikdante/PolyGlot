@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 module LogParser.LogParser
        (IP(..),
+        Log(..),
+        LogEntry(..),
         parseLog,
         parseIP,
         parseTime,
@@ -21,7 +23,6 @@ data IP = IP Word8 Word8 Word8 Word8 deriving Show
 -- Enum
 -- deriving Enum enables us to iterate over the constructors for a Product
 -- it also lets us map from an Int to a Product.
---
 data Product = Mouse | Keyboard | Monitor | Speakers deriving (Enum,Show)
 
 productFromID :: Int -> Product
@@ -30,15 +31,12 @@ productFromID = toEnum . (subtract 1)
 productToID :: Product -> Int
 productToID = succ . fromEnum
 
-
 data LogEntry = LogEntry {
   entryTime    :: T.LocalTime,
  entryIP      :: IP,
  entryProduct :: Product} deriving Show
 
 type Log = [LogEntry]
-
-
 
 parseIP :: Parser IP
 parseIP = do
