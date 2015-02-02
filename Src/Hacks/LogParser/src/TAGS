@@ -1,0 +1,59 @@
+
+./dist/build/autogen/Paths_LogParser.hs,968
+module Paths_LogParser Paths_LogParser0,1
+catchIO catchIO11,12
+catchIO catchIO12,13
+version version14,15
+version version15,16
+bindir, libdir, datadir, libexecdir, sysconfdir sysconfdir16,17
+bindir, libdir, datadir, libexecdir,libexecdir16,17
+bindir, libdir, datadir,datadir16,17
+bindir, libdir,libdir16,17
+bindir,bindir16,17
+bindir bindir18,19
+libdir libdir19,20
+datadir datadir20,21
+libexecdir libexecdir21,22
+sysconfdir sysconfdir22,23
+getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir getSysconfDir24,25
+getBinDir, getLibDir, getDataDir, getLibexecDir,getLibexecDir24,25
+getBinDir, getLibDir, getDataDir,getDataDir24,25
+getBinDir, getLibDir,getLibDir24,25
+getBinDir,getBinDir24,25
+getBinDir getBinDir25,26
+getLibDir getLibDir26,27
+getDataDir getDataDir27,28
+getLibexecDir getLibexecDir28,29
+getSysconfDir getSysconfDir29,30
+getDataFileName getDataFileName31,32
+getDataFileName getDataFileName32,33
+
+./Setup.hs,15
+main main1,2
+
+./src/LogParser/LogParser.hs,667
+module LogParser.LogParserLogParser.LogParser1,2
+data IP IP13,14
+data IP = IP IP13,14
+data Product Product16,17
+data Product = Mouse Mouse16,17
+data Product = Mouse | Keyboard Keyboard16,17
+data Product = Mouse | Keyboard | Monitor Monitor16,17
+data Product = Mouse | Keyboard | Monitor | Speakers Speakers16,17
+data LogEntry LogEntry18,19
+data LogEntry = {{18,19
+  entryTime entryTime19,20
+ ,entryIP entryIP20,21
+ ,entryProduct entryProduct21,22
+type Log Log24,25
+parseIP parseIP28,29
+parseIP parseIP29,30
+parserProduct parserProduct39,40
+parserProduct parserProduct40,41
+parserTime parserTime42,43
+parserTime parserTime43,44
+
+./src/Main.hs,51
+module MainMain1,2
+main main7,8
+main main8,9
