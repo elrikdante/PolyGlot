@@ -47,12 +47,17 @@ data LogEntry = LogEntry {
                 | NginxLogEntry {
                     entryTime :: T.LocalTime,
                     challengeToken :: String,
-                    httpMethod :: HttpMethod
-                }
-              deriving Show
+                    httpMethod :: HttpMethod,
+                    ip :: IP,
+                    referer :: String
+                } deriving Show
+
 
 type Log = [LogEntry]
 
+--instance Show LogEntry where
+--  show e@(NginxLogEntry {}) = challengeToken e
+--;  show _ = "OTHER"
 
 parseIP :: Parser IP
 parseIP = do
@@ -131,20 +136,48 @@ parseHttpMethod = do
 parseNginxLogEntry :: Parser LogEntry
 parseNginxLogEntry = do
   ip <- parseIP
+  string " - - "
+  char '['
+  entryTime <-  parseNginxTime
+  string " +0000] \""
+  httpM <- parseHttpMethod
+  string " /guest/challenge/"
+  challengeToken <- takeTill ( == ' ')
+  string " HTTP/1.1\" "
+  responseCode <- count 3 digit
+  _ <- takeTill ( == '"')
+  char '"'
+  referer <- takeTill ( == '"')
+  char '"'
+  char ' '
+  char '"'
+  userAgenString <- takeTill ( == '\"')
+  char '"'
+  char ' '
+  char '"'
+  requestorIp <- parseIP
+  char '"'
+  return NginxLogEntry {challengeToken = C8.unpack challengeToken, entryTime = entryTime, httpMethod = httpM, ip = requestorIp, referer = C8.unpack referer}
+
+parseNginxLogEntry' = do
+  ip <- parseIP
   string " - - ["
   time <- parseNginxTime
   string "+0000] \""
   httpMethod <- parseHttpMethod
   string " /guest/challenge/"
   challengeToken <- takeTill ( ==' ')
+  string " HTTP/1.1\" "
+  responseCode <- count 3 digit
 
-  return NginxLogEntry {entryTime = time,
-                        challengeToken = (C8.unpack challengeToken),
-                        httpMethod = httpMethod
-                       }
+  return NginxLogEntry {
+    entryTime      = time,
+    challengeToken = (C8.unpack challengeToken),
+    httpMethod     = httpMethod
+  }
 
 parseNginxLog :: Parser Log
-parseNginxLog = many $ parseNginxLogEntry <* endOfLine
+parseNginxLog = many1 $ parseNginxLogEntry <* endOfLine
 
 parseLogEntry :: Parser LogEntry
 parseLogEntry = do
