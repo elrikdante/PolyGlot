@@ -35,6 +35,7 @@ map f = Main.foldr (cons . f) empty
 repeat :: a -> EDList a
 repeat = EDL . Endo . const . fix . (:)
 
+replicate :: Int -> a -> EDList a
 replicate 0 _ = EDL (Endo id)
 replicate n a = singleton a <> Main.replicate (n - 1) a
             
