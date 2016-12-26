@@ -26,5 +26,8 @@ foldr f z = Prelude.foldr f z . toList
 map  :: (a -> b) -> EDList a -> EDList b
 map f = Main.foldr go empty where go = cons . f
 
+replicate :: a -> EDList a
+replicate = EDL . Endo . const . fix . (:)
+
 listA = fromList [1..5]
 listB = fromList [10..20]
