@@ -1,7 +1,6 @@
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE RankNTypes #-}
 module Data.DList.Endo where
 
@@ -12,7 +11,7 @@ import Data.Function
 data None
 data Some
 
-newtype EDList a = EDL { unEDL :: forall b . ListOf b a }
+data EDList a = forall b. EDL { unEDL :: ListOf b a }
 
 type ListOf b a = Constant (Endo [a]) b
 
@@ -31,7 +30,7 @@ cons :: a -> EDList a -> EDList a
 cons x (EDL (Constant xs)) = EDL (Constant (Endo (x:) <> xs))
 
 toList :: EDList a -> [a]
-toList = flip appEndo [] . getConstant . unEDL
+toList (EDL innards) = flip appEndo [] (getConstant innards)
 
 fromList,fromList' :: [a] -> EDList a
 fromList' = Prelude.foldr cons empty
@@ -60,10 +59,6 @@ head :: EDList a -> a
 head = Prelude.head . toList
 
 --
-instance Monoid (ListOf None a) where
-  mempty      = nil
-  mappend _ _ = nil
-
 class Coercible a b where
   coerce :: a -> b
 
@@ -99,7 +94,3 @@ inflate= coerce
 
 deflate :: ListOf Some a -> ListOf None a
 deflate= coerce
-
-wierdFold :: (Coercible None c, Coercible Some c) => 
-             (a -> b -> b) -> b -> ListOf c a -> b
-wierdFold = undefined
