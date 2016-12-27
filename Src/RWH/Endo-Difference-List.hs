@@ -1,3 +1,7 @@
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE RankNTypes #-}
 module Data.DList.Endo where
 
@@ -5,11 +9,17 @@ import Data.Functor.Constant
 import Data.Monoid
 import Data.Function
 
-newtype EDList a = EDL { unEDL :: forall b . Constant (Endo [a]) b }
+data None
+data Some
+
+newtype EDList a = EDL { unEDL :: forall b . ListOf b a }
+
+type ListOf b a = Constant (Endo [a]) b
 
 instance Monoid (EDList a) where
   mempty = empty
   mappend = append
+
 
 singleton :: a -> EDList a
 singleton x = EDL (Constant (Endo (x:)))
@@ -28,7 +38,7 @@ fromList' = Prelude.foldr cons empty
 fromList  as = EDL (Constant (Endo (as++)))
 
 append :: EDList a -> EDList a -> EDList a
-append (EDL xs) (EDL ys) = EDL (xs <> ys)
+append (EDL (Constant xs)) (EDL (Constant ys)) = EDL (Constant (xs <> ys))
 
 foldr     :: (a -> b -> b) -> b -> EDList a -> b
 foldr f z = Prelude.foldr f z . toList
@@ -45,3 +55,51 @@ replicate n a = cons a (Data.DList.Endo.replicate (n - 1) a)
             
 take :: Int -> EDList a -> EDList a
 take n  = fromList . Prelude.take n . toList
+
+head :: EDList a -> a
+head = Prelude.head . toList
+
+--
+instance Monoid (ListOf None a) where
+  mempty      = nil
+  mappend _ _ = nil
+
+class Coercible a b where
+  coerce :: a -> b
+
+class IsEmpty a where
+  isEmpty :: a -> Bool
+
+instance Coercible (ListOf None a) (ListOf Some a) where
+  coerce = const (Constant (Endo id))
+
+instance Coercible (ListOf Some a) (ListOf None a) where
+  coerce = const nil
+
+instance IsEmpty (ListOf None a) where
+  isEmpty = const True
+
+instance IsEmpty (ListOf Some a) where
+  isEmpty = const False
+
+instance IsEmpty None where
+  isEmpty = const True
+
+instance IsEmpty Some where
+  isEmpty = const False
+
+nil :: ListOf None a
+nil = Constant (Endo id)
+
+one :: a -> ListOf Some a
+one x = Constant (Endo (x:))
+
+inflate :: ListOf None a -> ListOf Some a
+inflate= coerce
+
+deflate :: ListOf Some a -> ListOf None a
+deflate= coerce
+
+wierdFold :: (Coercible None c, Coercible Some c) => 
+             (a -> b -> b) -> b -> ListOf c a -> b
+wierdFold = undefined
