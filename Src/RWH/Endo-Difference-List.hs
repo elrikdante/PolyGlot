@@ -1,27 +1,31 @@
+{-# LANGUAGE RankNTypes #-}
+module Data.DList.Endo where
+
+import Data.Functor.Constant
 import Data.Monoid
 import Data.Function
 
-newtype EDList a = EDL { unEDL :: Endo [a] }
+newtype EDList a = EDL { unEDL :: forall b . Constant (Endo [a]) b }
 
 instance Monoid (EDList a) where
   mempty = empty
   mappend = append
 
 singleton :: a -> EDList a
-singleton = EDL . Endo . (:)
+singleton x = EDL (Constant (Endo (x:)))
 
 empty :: EDList a
-empty  = EDL (Endo id)
+empty  = EDL (Constant (Endo id))
 
 cons :: a -> EDList a -> EDList a
-cons x (EDL xs) = EDL (Endo (x:) <> xs)
+cons x (EDL xs) = EDL (Constant (Endo (x:) <> getConstant xs))
 
 toList :: EDList a -> [a]
-toList = flip appEndo [] . unEDL
+toList = flip appEndo [] . getConstant . unEDL
 
 fromList,fromList' :: [a] -> EDList a
 fromList' = Prelude.foldr cons empty
-fromList  = EDL . Endo . (++)
+fromList  as = EDL (Constant (Endo (as++)))
 
 append :: EDList a -> EDList a -> EDList a
 append (EDL xs) (EDL ys) = EDL (xs <> ys)
@@ -30,17 +34,14 @@ foldr     :: (a -> b -> b) -> b -> EDList a -> b
 foldr f z = Prelude.foldr f z . toList
 
 map  :: (a -> b) -> EDList a -> EDList b
-map f = Main.foldr (cons . f) empty
+map f = Data.DList.Endo.foldr (cons . f) empty
 
 repeat :: a -> EDList a
-repeat = EDL . Endo . const . fix . (:)
+repeat x = EDL (Constant (Endo (const (fix (x:)))))
 
 replicate :: Int -> a -> EDList a
-replicate 0 _ = EDL (Endo id)
-replicate n a = singleton a <> Main.replicate (n - 1) a
+replicate 0 _ = EDL (Constant (Endo id))
+replicate n a = cons a (Data.DList.Endo.replicate (n - 1) a)
             
 take :: Int -> EDList a -> EDList a
-take n = fromList . Prelude.take n . toList
-
-listA = fromList [1..5]
-listB = fromList [10..20]
+take n  = fromList . Prelude.take n . toList
