@@ -18,7 +18,7 @@ empty :: EDList a
 empty  = EDL (Constant (Endo id))
 
 cons :: a -> EDList a -> EDList a
-cons x (EDL xs) = EDL (Constant (Endo (x:) <> getConstant xs))
+cons x (EDL (Constant xs)) = EDL (Constant (Endo (x:) <> xs))
 
 toList :: EDList a -> [a]
 toList = flip appEndo [] . getConstant . unEDL
